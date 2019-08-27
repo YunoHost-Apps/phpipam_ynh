@@ -80,7 +80,7 @@ ynh_print_info "Installing dependencies..."
 ###		- As well as the section "REINSTALL DEPENDENCIES" in the restore script
 ###		- And the section "UPGRADE DEPENDENCIES" in the upgrade script
 
-ynh_install_app_dependencies php7.0-mbstring
+ynh_install_app_dependencies php7.0-mbstring php7.0-gmp
 
 #=================================================
 # CREATE A MYSQL DATABASE
@@ -126,11 +126,11 @@ ynh_system_user_create $app
 # MODIFY A CONFIG FILE
 #=================================================
 
-cp -a ../conf/config.dist.php $final_path/config.dist.php
+cp -a ../conf/config.dist.php $final_path/config.php
 
-ynh_replace_string "yunouser"   "$db_name"    "$final_path/config.dist.php"
-ynh_replace_string "yunopass"   "$db_pwd"     "$final_path/config.dist.php"
-ynh_replace_string "yunobase"   "$db_name"    "$final_path/config.dist.php"
+ynh_replace_string "yunouser"   "$db_name"    "$final_path/config.php"
+ynh_replace_string "yunopass"   "$db_pwd"     "$final_path/config.php"
+ynh_replace_string "yunobase"   "$db_name"    "$final_path/config.php"
 #ynh_replace_string "yunomail"   "$email"      "$final_path/config_inc.php.sample"s
 #ynh_replace_string "yunodomain" "$domain"     "$final_path/config_inc.php.sample"
 
