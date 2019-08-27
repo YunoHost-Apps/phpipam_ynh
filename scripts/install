@@ -132,8 +132,6 @@ cp -a ../conf/config.dist.php $final_path/config.php
 ynh_replace_string "yunouser"   "$db_name"    "$final_path/config.php"
 ynh_replace_string "yunopass"   "$db_pwd"     "$final_path/config.php"
 ynh_replace_string "yunobase"   "$db_name"    "$final_path/config.php"
-#ynh_replace_string "yunomail"   "$email"      "$final_path/config_inc.php.sample"s
-#ynh_replace_string "yunodomain" "$domain"     "$final_path/config_inc.php.sample"
 
 #=================================================
 # STORE THE CONFIG FILE CHECKSUM
