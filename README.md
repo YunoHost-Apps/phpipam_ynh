@@ -16,6 +16,11 @@ phpIPAM Server
  App can be installed by YunoHost **admin web-interface** or by **running following command**:
 
          $ sudo yunohost app install https://github.com/YunoHost-Apps/phpipam_ynh
+         
+        1. Login in phpIPAM
+        2. put your sql user and password 
+        (you can find them via "nano /var/www/phpipam/config.php" in cli mode)
+        3. Admin user for db is same user for sql same for password
 
  
 ### Upgrade this package:
