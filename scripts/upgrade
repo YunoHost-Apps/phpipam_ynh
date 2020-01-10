@@ -5,13 +5,10 @@ set -eu
 
 # See comments in install script
 app=$YNH_APP_INSTANCE_NAME
-final_path=/opt/yunohost/$app
+final_path=/var/www/$app
 
 # Source YunoHost helpers
 source /usr/share/yunohost/helpers
-
-# Stop emby-server service
-systemctl stop emby-server
 
 #=================================================
 # DOWNLOAD, CHECK AND UNPACK SOURCE
@@ -21,19 +18,12 @@ ynh_app_setting_set $app final_path $final_path
 # Download, check integrity, uncompress and patch the source from app.src
 ynh_setup_source "$final_path"
 
-#==============================================
-# INSTALL PLEX
-#==============================================
-
-dpkg --install $final_path/emby-server-deb*
-
 #=================================================
 # NGINX CONFIGURATION
 #=================================================
 
 # Create a dedicated nginx config
 #ynh_add_nginx_config
-
 
 #=================================================
 # UPGRADE CONFIG
@@ -51,6 +41,6 @@ dpkg --install $final_path/emby-server-deb*
 #  ynh_app_setting_set "$app" unprotected_uris "/"
 #fi
 
-# Start emby-server service
-systemctl start emby-server
+# Reload Nginx service
+systemctl reload nginx
 
