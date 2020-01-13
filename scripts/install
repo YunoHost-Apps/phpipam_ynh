@@ -114,8 +114,8 @@ ynh_setup_source "$final_path"
 #=================================================
 
 ynh_print_info --message="Import SQL..."
-mysql -u root -p phpipam < "$final_path/db/SCHEMA.sql"
-#ynh_mysql_execute_file_as_root --file="$final_path/db/SCHEMA.sql" --database="$db_name"
+#mysql -u root -p phpipam < "$final_path/db/SCHEMA.sql"
+ynh_mysql_execute_file_as_root --file="$final_path/db/SCHEMA.sql" --database="$db_name"
 
 #=================================================
 # NGINX CONFIGURATION
@@ -160,20 +160,20 @@ ynh_replace_string "yunobase"   "$db_name"    "$final_path/config.php"
 # SECURE FILES AND DIRECTORIES
 #=================================================
 
-ynh_script_progression --message="Configuring phpipam..."
+#ynh_script_progression --message="Configuring phpipam..."
 
 ### For security reason, any app should set the permissions to root: before anything else.
 ### Then, if write authorization is needed, any access should be given only to directories
 ### that really need such authorization.
 
 # Remove non utile files
-pushd "$final_path"
-rm -rf install
-rm -f INSTALL.txt
-rm -f README.md
-rm -f .htaccess"
-rm -rf .git*
-popd
+#pushd "$final_path"
+#rm -rf install
+#rm -f INSTALL.txt
+#rm -f README.md
+#rm -f .htaccess"
+#rm -rf .git*
+#popd
 
 
 # Set permissions to app files
