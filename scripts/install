@@ -154,11 +154,14 @@ ynh_replace_string "yunobase"   "$db_name"    "$final_path/config.php"
 ### that really need such authorization.
 
 # Remove non utile files
-rm -rf "$final_path/install"
-rm -f "$final_path/INSTALL.txt"
-rm -f "$final_path/README.md"
-rm -f "$final_path/.htaccess"
-rm -rf "$final_path/.git*"
+pushd "$final_path"
+rm -rf install
+rm -f INSTALL.txt
+rm -f README.md
+rm -f .htaccess"
+rm -rf .git*
+popd
+
 
 # Set permissions to app files
 chown -R www-data: "$final_path"
