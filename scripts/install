@@ -70,7 +70,7 @@ ynh_app_setting_set "$app" is_public "$is_public"
 # INSTALL DEPENDENCIES
 #=================================================
 
-ynh_print_info "Installing dependencies..."
+ynh_script_progression --message="Installing dependencies..." --weight=9
 
 ### `ynh_install_app_dependencies` allows you to add any "apt" dependencies to the package.
 ### Those deb packages will be installed as dependencies of this package.
@@ -79,13 +79,13 @@ ynh_print_info "Installing dependencies..."
 ###		- As well as the section "REINSTALL DEPENDENCIES" in the restore script
 ###		- And the section "UPGRADE DEPENDENCIES" in the upgrade script
 
-#ynh_install_app_dependencies php7.0-mbstring php7.0-gmp
 ynh_install_app_dependencies php7.0-gmp php7.0-snmp
 
 #=================================================
 # CREATE A MYSQL DATABASE
 #=================================================
-ynh_print_info "Creating a MySQL database..."
+
+ynh_script_progression --message="Creating a MySQL database..."
 
 ### Use these lines if you need a database for the application.
 ### `ynh_mysql_setup_db` will create a database, an associated user and a ramdom password.
@@ -104,15 +104,24 @@ ynh_mysql_setup_db "$db_name" "$db_name"
 # DOWNLOAD, CHECK AND UNPACK SOURCE
 #=================================================
 
+ynh_script_progression --message="Setting up source files..." --weight=4
 ynh_app_setting_set "$app" final_path "$final_path"
 # Download, check integrity, uncompress and patch the source from app.src
 ynh_setup_source "$final_path"
+
+#=================================================
+# IMPORT PHPIPAM DB
+#=================================================
+
+ynh_print_info --message="Import SQL..."
+ynh_mysql_execute_file_as_root --file="$final_path/db/SCHEMA.sql" --database="$db_name"
 
 #=================================================
 # NGINX CONFIGURATION
 #=================================================
 
 # Create a dedicated nginx config
+ynh_script_progression --message="Configuring nginx web server..." --weight=3
 ynh_add_nginx_config
 
 #=================================================
@@ -120,6 +129,7 @@ ynh_add_nginx_config
 #=================================================
 
 # Create a system user
+ynh_script_progression --message="Configuring system user..." --weight=3
 ynh_system_user_create "$app"
 
 #=================================================
@@ -148,6 +158,8 @@ ynh_replace_string "yunobase"   "$db_name"    "$final_path/config.php"
 #=================================================
 # SECURE FILES AND DIRECTORIES
 #=================================================
+
+ynh_script_progression --message="Configuring phpipam..."
 
 ### For security reason, any app should set the permissions to root: before anything else.
 ### Then, if write authorization is needed, any access should be given only to directories
