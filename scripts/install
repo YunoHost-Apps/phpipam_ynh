@@ -79,7 +79,7 @@ ynh_script_progression --message="Installing dependencies..." --weight=9
 ###		- As well as the section "REINSTALL DEPENDENCIES" in the restore script
 ###		- And the section "UPGRADE DEPENDENCIES" in the upgrade script
 
-ynh_install_app_dependencies php7.0-gmp php7.0-snmp
+ynh_install_app_dependencies php7.0-gmp php7.0-snmp php7.0-ldap
 
 #=================================================
 # CREATE A MYSQL DATABASE
