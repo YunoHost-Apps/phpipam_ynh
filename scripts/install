@@ -170,7 +170,9 @@ ynh_secure_remove $final_path/install
 ynh_secure_remove $final_path/INSTALL.txt
 ynh_secure_remove $final_path/README.md
 ynh_secure_remove $final_path/.htaccess
-ynh_secure_remove $final_path/.git*
+ynh_secure_remove $final_path/.gitmodules
+ynh_secure_remove $final_path/.github
+ynh_secure_remove $final_path/.gitignore
 
 
 # Set permissions to app files
