@@ -114,7 +114,6 @@ ynh_setup_source "$final_path"
 #=================================================
 
 ynh_print_info --message="Import SQL..."
-#mysql -u root -p phpipam < "$final_path/db/SCHEMA.sql"
 ynh_mysql_execute_file_as_root --file="$final_path/db/SCHEMA.sql" --database="$db_name"
 
 #=================================================
@@ -167,13 +166,11 @@ ynh_replace_string "yunobase"   "$db_name"    "$final_path/config.php"
 ### that really need such authorization.
 
 # Remove non utile files
-#pushd "$final_path"
-#rm -rf install
-#rm -f INSTALL.txt
-#rm -f README.md
-#rm -f .htaccess"
-#rm -rf .git*
-#popd
+ynh_secure_remove $final_path/install
+ynh_secure_remove $final_path/INSTALL.txt
+ynh_secure_remove $final_path/README.md
+ynh_secure_remove $final_path/.htaccess
+ynh_secure_remove $final_path/.git*
 
 
 # Set permissions to app files
