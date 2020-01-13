@@ -153,6 +153,11 @@ ynh_replace_string "yunobase"   "$db_name"    "$final_path/config.php"
 ### Then, if write authorization is needed, any access should be given only to directories
 ### that really need such authorization.
 
+# Remove non utile files
+rm -rf "$final_path/install"
+rm -rf "$final_path/.htaccess"
+rm -rf "$final_path/.git*"
+
 # Set permissions to app files
 chown -R www-data: "$final_path"
 
