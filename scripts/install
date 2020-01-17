@@ -110,6 +110,15 @@ ynh_app_setting_set "$app" final_path "$final_path"
 ynh_setup_source "$final_path"
 
 #=================================================
+# DOWNLOAD, CHECK AND UNPACK SOURCE
+#=================================================
+
+ynh_script_progression --message="Setting up source files..." --weight=4
+ynh_app_setting_set "$mail" final_path "$final_path/functions/PHPMailer/"
+# Download, check integrity, uncompress and patch the source from app.src
+ynh_setup_source "$final_path"
+
+#=================================================
 # IMPORT PHPIPAM DB
 #=================================================
 
