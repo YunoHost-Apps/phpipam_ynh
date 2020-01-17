@@ -166,13 +166,15 @@ ynh_replace_string "yunobase"   "$db_name"    "$final_path/config.php"
 ### that really need such authorization.
 
 # Remove non utile files
-ynh_secure_remove $final_path/install
-ynh_secure_remove $final_path/INSTALL.txt
-ynh_secure_remove $final_path/README.md
-ynh_secure_remove $final_path/.htaccess
-ynh_secure_remove $final_path/.gitmodules
-ynh_secure_remove $final_path/.github
-ynh_secure_remove $final_path/.gitignore
+rm -f $final_path/config.dist.php
+rm -f $final_path/config.docker.php
+rm -f $final_path/INSTALL.txt
+rm -f $final_path/README.md
+rm -f $final_path/.htaccess
+rm -rf $final_path/install
+rm -rf $final_path/.gitmodules
+rm -rf $final_path/.github
+rm -rf $final_path/.gitignore
 
 
 # Set permissions to app files
