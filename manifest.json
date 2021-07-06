@@ -3,11 +3,19 @@
     "id": "phpipam",
     "packaging_format": 1,
     "description": {
-        "en": "phpIPAM package for YunoHost.",
-        "fr": "phpIPAM pour YunoHost."
+        "en": "Web IP address management application",
+        "fr": "Application web de gestion d'adresses IP"
     },
     "version": "1.4.3~ynh1",
     "url": "https://phpipam.net/",
+    "upstream": {
+        "license": "GPL-3.0",
+        "website": "https://phpipam.net/",
+        "demo": "https://demo.example.com",
+        "admindoc": "https://yunohost.org/packaging_apps",
+        "userdoc": "https://yunohost.org/apps",
+        "code": "https://some.forge.com/example/example"
+    },
     "license": "GPL-3.0",
     "maintainer": {
         "name": "liberodark",
