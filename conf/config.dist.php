@@ -124,7 +124,7 @@ $session_storage = "files";
  *
  ******************************/
 if(!defined('BASE'))
-define('BASE', "__PATH__");
+define('BASE', "__PATH__/");
 
 
 /**
