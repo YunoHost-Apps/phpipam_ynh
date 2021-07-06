@@ -4,21 +4,21 @@
  * database connection details
  ******************************/
 $db['host'] = 'localhost';
-$db['user'] = 'yunouser';
-$db['pass'] = 'yunopass';
-$db['name'] = 'yunobase';
+$db['user'] = '__DB_NAME__';
+$db['pass'] = '__DB_PWD__';
+$db['name'] = '__DB_NAME__';
 $db['port'] = 3306;
 
 /**
  * Database webhost settings
  *
- * Enable and change this setting if your MySQL database does not run on
- * localhost and you want to use the automatic database installation method
- * to create a database user for you (which by default is created @localhost)
+ * Change this setting if your MySQL database does not run on localhost
+ * and you want to use the automatic database installation method to
+ * create a database user for you (which by default is created @localhost)
  *
  * Set to the hostname or IP address of the webserver, or % to allow all
  ******************************/
-// $db['webhost'] = 'localhost';
+$db['webhost'] = '%';
 
 
 /**
@@ -96,6 +96,13 @@ $api_allow_unsafe = false;
  ******************************/
 $phpsessname = "phpipam";
 
+/**
+ * Cookie SameSite settings ("None", "Lax"=Default, "Strict")
+ * - "Strict" increases security
+ * - "Lax" required for SAML2
+ * - "None" requires HTTPS
+ */
+$cookie_samesite = "Lax";
 
 /**
  * Session storage - files or database
@@ -117,7 +124,7 @@ $session_storage = "files";
  *
  ******************************/
 if(!defined('BASE'))
-define('BASE', "/");
+define('BASE', "__PATH__/");
 
 
 /**
@@ -176,3 +183,10 @@ $config['split_ip_custom_fields'] = false;                  // Show custom field
  * If multiple php versions are present; overide selection with $php_cli_binary.
  */
 // $php_cli_binary = '/usr/bin/php7.1';
+
+/**
+ * Path to mysqldump binary
+ *
+ * default: '/usr/bin/mysqldump'
+ */
+// $mysqldump_cli_binary = '/usr/bin/mysqldump';
