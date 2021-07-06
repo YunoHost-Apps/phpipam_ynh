@@ -10,11 +10,11 @@
     "url": "https://phpipam.net/",
     "upstream": {
         "license": "GPL-3.0",
-        "website": "https://phpipam.net/",
-        "demo": "https://demo.example.com",
-        "admindoc": "https://yunohost.org/packaging_apps",
+        "website": "https://phpipam.net",
+        "demo": "http://demo.phpipam.net",
+        "admindoc": "https://phpipam.net/documents/",
         "userdoc": "https://yunohost.org/apps",
-        "code": "https://some.forge.com/example/example"
+        "code": "https://github.com/phpipam/phpipam"
     },
     "license": "GPL-3.0",
     "maintainer": {
