@@ -2,11 +2,7 @@
 	; Manifest
 		domain="domain.tld"
 		path="/path"
-		admin="john"
-		language="fr"
 		is_public=1
-		password="password"
-		port="666"
 	; Checks
 		pkg_linter=1
 		setup_sub_dir=1
@@ -15,7 +11,6 @@
 		setup_private=1
 		setup_public=1
 		upgrade=1
-		; upgrade=1	from_commit=CommitHash
 		backup_restore=1
 		multi_instance=1
 		change_url=1
@@ -25,5 +20,4 @@ Notification=none
 ;;; Upgrade options
 	; commit=CommitHash
 		name=Name and date of the commit.
-		manifest_arg=domain=DOMAIN&path=PATH&admin=USER&language=fr&is_public=1&password=pass&port=666&
-
+		manifest_arg=domain=DOMAIN&path=PATH&admin=USER&is_public=1&
