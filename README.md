@@ -23,7 +23,8 @@ Web IP address management application
 
 ## Screenshots
 
-![](./doc/screenshots/dashboard-thumb.png)
+![](./doc/screenshots/.DS_Store)
+![](./doc/screenshots/dashboard.png)
 
 ## Documentation and resources
 

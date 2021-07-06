@@ -19,7 +19,8 @@ Application web de gestion d'adresses IP
 
 ## Captures d'écran
 
-![](./doc/screenshots/dashboard-thumb.png)
+![](./doc/screenshots/.DS_Store)
+![](./doc/screenshots/dashboard.png)
 
 ## Documentations et ressources
 
