@@ -19,7 +19,7 @@ Web IP address management application
 
 **Shipped version:** 1.4.3~ynh1
 
-**Demo:** https://demo.example.com
+**Demo:** http://demo.phpipam.net
 
 ## Screenshots
 
@@ -28,10 +28,10 @@ Web IP address management application
 
 ## Documentation and resources
 
-* Official app website: https://phpipam.net/
+* Official app website: https://phpipam.net
 * Official user documentation: https://yunohost.org/apps
-* Official admin documentation: https://yunohost.org/packaging_apps
-* Upstream app code repository: https://some.forge.com/example/example
+* Official admin documentation: https://phpipam.net/documents/
+* Upstream app code repository: https://github.com/phpipam/phpipam
 * YunoHost documentation for this app: https://yunohost.org/app_phpipam
 * Report a bug: https://github.com/YunoHost-Apps/phpipam_ynh/issues
 

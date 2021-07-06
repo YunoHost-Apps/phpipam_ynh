@@ -15,7 +15,7 @@ Application web de gestion d'adresses IP
 
 **Version incluse :** 1.4.3~ynh1
 
-**Démo :** https://demo.example.com
+**Démo :** http://demo.phpipam.net
 
 ## Captures d'écran
 
@@ -24,10 +24,10 @@ Application web de gestion d'adresses IP
 
 ## Documentations et ressources
 
-* Site officiel de l'app : https://phpipam.net/
+* Site officiel de l'app : https://phpipam.net
 * Documentation officielle utilisateur : https://yunohost.org/apps
-* Documentation officielle de l'admin : https://yunohost.org/packaging_apps
-* Dépôt de code officiel de l'app : https://some.forge.com/example/example
+* Documentation officielle de l'admin : https://phpipam.net/documents/
+* Dépôt de code officiel de l'app : https://github.com/phpipam/phpipam
 * Documentation YunoHost pour cette app : https://yunohost.org/app_phpipam
 * Signaler un bug : https://github.com/YunoHost-Apps/phpipam_ynh/issues
 
