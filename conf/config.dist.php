@@ -18,7 +18,7 @@ $db['port'] = 3306;
  *
  * Set to the hostname or IP address of the webserver, or % to allow all
  ******************************/
-$db['webhost'] = '';
+$db['webhost'] = '%';
 
 
 /**
