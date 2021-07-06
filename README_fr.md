@@ -17,6 +17,10 @@ Application web de gestion d'adresses IP
 
 **Démo :** https://demo.example.com
 
+## Captures d'écran
+
+![](./doc/screenshots/dashboard-thumb.png)
+
 ## Documentations et ressources
 
 * Site officiel de l'app : https://phpipam.net/

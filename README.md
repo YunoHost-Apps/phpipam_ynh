@@ -21,6 +21,10 @@ Web IP address management application
 
 **Demo:** https://demo.example.com
 
+## Screenshots
+
+![](./doc/screenshots/dashboard-thumb.png)
+
 ## Documentation and resources
 
 * Official app website: https://phpipam.net/
