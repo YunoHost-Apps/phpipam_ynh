@@ -17,7 +17,7 @@ If you don't have YunoHost, please consult [the guide](https://yunohost.org/#/in
 
 Web IP address management application
 
-**Shipped version:** 1.4.4~ynh1
+**Shipped version:** 1.4.4~ynh2
 
 **Demo:** http://demo.phpipam.net
 
@@ -29,7 +29,6 @@ Web IP address management application
 ## Documentation and resources
 
 * Official app website: https://phpipam.net
-* Official user documentation: https://yunohost.org/apps
 * Official admin documentation: https://phpipam.net/documents/
 * Upstream app code repository: https://github.com/phpipam/phpipam
 * YunoHost documentation for this app: https://yunohost.org/app_phpipam
