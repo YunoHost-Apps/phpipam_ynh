@@ -13,7 +13,7 @@ Si vous n'avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) pour
 
 Application web de gestion d'adresses IP
 
-**Version incluse :** 1.4.4~ynh2
+**Version incluse :** 1.4.5~ynh1
 
 **Démo :** http://demo.phpipam.net
 
