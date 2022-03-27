@@ -4,7 +4,7 @@
  * database connection details
  ******************************/
 $db['host'] = 'localhost';
-$db['user'] = '__DB_NAME__';
+$db['user'] = '__DB_USER__';
 $db['pass'] = '__DB_PWD__';
 $db['name'] = '__DB_NAME__';
 $db['port'] = 3306;
