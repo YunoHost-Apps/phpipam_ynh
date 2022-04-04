@@ -1,5 +1,5 @@
-SOURCE_URL=https://github.com/phpipam/phpipam/releases/download/v1.4.4/phpipam-v1.4.4.zip
-SOURCE_SUM=0baa77f135bbf72b138c58e50d58046eaaad722a96f09d3e148b61c5cd5f071f
+SOURCE_URL=https://github.com/phpipam/phpipam/releases/download/v1.4.6/phpipam-v1.4.6.zip
+SOURCE_SUM=65ad33c124fc83ca1a3ba386bbc1e6d8fb611b2ccaa4c6e8a1d864bcde4122de
 SOURCE_SUM_PRG=sha256sum
 SOURCE_FORMAT=zip
 SOURCE_IN_SUBDIR=true
