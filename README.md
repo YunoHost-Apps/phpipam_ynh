@@ -23,7 +23,6 @@ Web IP address management application
 
 ## Screenshots
 
-![Screenshot of phpIPAM](./doc/screenshots/.DS_Store)
 ![Screenshot of phpIPAM](./doc/screenshots/dashboard.png)
 
 ## Documentation and resources

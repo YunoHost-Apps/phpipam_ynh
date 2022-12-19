@@ -23,7 +23,6 @@ Application web de gestion d'adresses IP
 
 ## Captures d'écran
 
-![Capture d'écran de phpIPAM](./doc/screenshots/.DS_Store)
 ![Capture d'écran de phpIPAM](./doc/screenshots/dashboard.png)
 
 ## Documentations et ressources
