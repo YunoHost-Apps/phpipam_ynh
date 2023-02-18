@@ -6,6 +6,7 @@ It shall NOT be edited by hand.
 # phpIPAM for YunoHost
 
 [![Integration level](https://dash.yunohost.org/integration/phpipam.svg)](https://dash.yunohost.org/appci/app/phpipam) ![Working status](https://ci-apps.yunohost.org/ci/badges/phpipam.status.svg) ![Maintenance status](https://ci-apps.yunohost.org/ci/badges/phpipam.maintain.svg)
+
 [![Install phpIPAM with YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=phpipam)
 
 *[Lire ce readme en français.](./README_fr.md)*
