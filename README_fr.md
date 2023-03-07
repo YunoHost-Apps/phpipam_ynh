@@ -6,6 +6,7 @@ It shall NOT be edited by hand.
 # phpIPAM pour YunoHost
 
 [![Niveau d’intégration](https://dash.yunohost.org/integration/phpipam.svg)](https://dash.yunohost.org/appci/app/phpipam) ![Statut du fonctionnement](https://ci-apps.yunohost.org/ci/badges/phpipam.status.svg) ![Statut de maintenance](https://ci-apps.yunohost.org/ci/badges/phpipam.maintain.svg)
+
 [![Installer phpIPAM avec YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=phpipam)
 
 *[Read this readme in english.](./README.md)*
@@ -17,7 +18,7 @@ Si vous n’avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) po
 
 Application web de gestion d'adresses IP
 
-**Version incluse :** 1.5.1~ynh1
+**Version incluse :** 1.5.2~ynh1
 
 **Démo :** http://demo.phpipam.net
 
