@@ -18,7 +18,7 @@ Si vous n’avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) po
 
 Application web de gestion d'adresses IP
 
-**Version incluse :** 1.5.1~ynh1
+**Version incluse :** 1.5.2~ynh1
 
 **Démo :** http://demo.phpipam.net
 
