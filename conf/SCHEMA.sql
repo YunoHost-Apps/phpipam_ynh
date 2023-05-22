@@ -10,7 +10,7 @@ CREATE TABLE `instructions` (
 /* insert default values */
 INSERT INTO `instructions` (`id`, `instructions`)
 VALUES
-	(1,'You can write instructions under admin menu!');
+  (1,'You can write instructions under admin menu!');
 
 
 # Dump of table customers
@@ -21,14 +21,14 @@ CREATE TABLE `customers` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(128) NOT NULL DEFAULT '',
   `address` varchar(255) DEFAULT NULL,
-  `postcode` int(8) DEFAULT NULL,
+  `postcode` VARCHAR(32) NULL DEFAULT NULL,
   `city` varchar(255) DEFAULT NULL,
   `state` varchar(255) DEFAULT NULL,
-  `lat` varchar(12) DEFAULT NULL,
-  `long` varchar(12) DEFAULT NULL,
+  `lat` varchar(31) DEFAULT NULL,
+  `long` varchar(31) DEFAULT NULL,
   `contact_person` text DEFAULT NULL,
   `contact_phone` varchar(32) DEFAULT NULL,
-  `contact_mail` varchar(255) DEFAULT NULL,
+  `contact_mail` varchar(254) DEFAULT NULL,
   `note` text DEFAULT NULL,
   `status` set('Active','Reserved','Inactive') DEFAULT 'Active',
   PRIMARY KEY (`id`),
@@ -44,7 +44,7 @@ CREATE TABLE `ipaddresses` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `subnetId` INT(11)  UNSIGNED  NULL  DEFAULT NULL,
   `ip_addr` varchar(100) NOT NULL,
-  `is_gateway` TINYINT(1)  NULL  DEFAULT '0',
+  `is_gateway` BOOL NOT NULL DEFAULT '0',
   `description` varchar(64) DEFAULT NULL,
   `hostname` varchar(255) DEFAULT NULL,
   `mac` varchar(20) DEFAULT NULL,
@@ -55,8 +55,8 @@ CREATE TABLE `ipaddresses` (
   `port` varchar(32) DEFAULT NULL,
   `note` text,
   `lastSeen` DATETIME  NULL  DEFAULT '1970-01-01 00:00:01',
-  `excludePing` BINARY  NULL  DEFAULT '0',
-  `PTRignore` BINARY  NULL  DEFAULT '0',
+  `excludePing` BOOL NOT NULL DEFAULT '0',
+  `PTRignore` BOOL NOT NULL DEFAULT '0',
   `PTR` INT(11)  UNSIGNED  NULL  DEFAULT '0',
   `firewallAddressObject` VARCHAR(100) NULL DEFAULT NULL,
   `editDate` TIMESTAMP  NULL  ON UPDATE CURRENT_TIMESTAMP,
@@ -71,16 +71,16 @@ CREATE TABLE `ipaddresses` (
 /* insert default values */
 INSERT INTO `ipaddresses` (`id`, `subnetId`, `ip_addr`, `description`, `hostname`, `state`)
 VALUES
-	(1,3,'168427779','Server1','server1.cust1.local',2),
-	(2,3,'168427780','Server2','server2.cust1.local',2),
-	(3,3,'168427781','Server3','server3.cust1.local',3),
-	(4,3,'168427782','Server4','server4.cust1.local',3),
-	(5,3,'168428021','Gateway',NULL,2),
-	(6,4,'168428286','Gateway',NULL,2),
-	(7,4,'168428042','Server1','ser1.client2.local',2),
-	(8,6,'172037636','DHCP range',NULL,4),
-	(9,6,'172037637','DHCP range',NULL,4),
-	(10,6,'172037638','DHCP range',NULL,4);
+  (1,3,'168427779','Server1','server1.cust1.local',2),
+  (2,3,'168427780','Server2','server2.cust1.local',2),
+  (3,3,'168427781','Server3','server3.cust1.local',3),
+  (4,3,'168427782','Server4','server4.cust1.local',3),
+  (5,3,'168428021','Gateway',NULL,2),
+  (6,4,'168428286','Gateway',NULL,2),
+  (7,4,'168428042','Server1','ser1.client2.local',2),
+  (8,6,'172037636','DHCP range',NULL,4),
+  (9,6,'172037637','DHCP range',NULL,4),
+  (10,6,'172037638','DHCP range',NULL,4);
 
 
 # Dump of table logs
@@ -93,8 +93,8 @@ CREATE TABLE `logs` (
   `date` varchar(32) DEFAULT NULL,
   `username` varchar(255) DEFAULT NULL,
   `ipaddr` varchar(64) DEFAULT NULL,
-  `command` varchar(128) DEFAULT '0',
-  `details` varchar(1024) DEFAULT NULL,
+  `command` text DEFAULT NULL,
+  `details` text DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -108,6 +108,7 @@ CREATE TABLE `requests` (
   `subnetId` INT(11)  UNSIGNED  NULL  DEFAULT NULL,
   `ip_addr` varchar(100) DEFAULT NULL,
   `description` varchar(64) DEFAULT NULL,
+  `mac` varchar(20) DEFAULT NULL,
   `hostname` varchar(255) DEFAULT NULL,
   `state` INT  NULL  DEFAULT '2',
   `owner` varchar(128) DEFAULT NULL,
@@ -134,6 +135,7 @@ CREATE TABLE `sections` (
   `subnetOrdering` VARCHAR(16)  NULL  DEFAULT NULL,
   `order` INT(3)  NULL  DEFAULT NULL,
   `editDate` TIMESTAMP  NULL  ON UPDATE CURRENT_TIMESTAMP,
+  `showSubnet` BOOL NOT NULL DEFAULT '1',
   `showVLAN` BOOL  NOT NULL  DEFAULT '0',
   `showVRF` BOOL  NOT NULL  DEFAULT '0',
   `showSupernetOnly` BOOL  NOT NULL  DEFAULT '0',
@@ -144,8 +146,8 @@ CREATE TABLE `sections` (
 /* insert default values */
 INSERT INTO `sections` (`id`, `name`, `description`, `permissions`)
 VALUES
-	(1,'Customers','Section for customers','{\"3\":\"1\",\"2\":\"2\"}'),
-	(2,'IPv6','Section for IPv6 addresses','{\"3\":\"1\",\"2\":\"2\"}');
+  (1,'Customers','Section for customers','{\"3\":\"1\",\"2\":\"2\"}'),
+  (2,'IPv6','Section for IPv6 addresses','{\"3\":\"1\",\"2\":\"2\"}');
 
 
 # Dump of table settings
@@ -156,7 +158,7 @@ CREATE TABLE `settings` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
   `siteTitle` varchar(64) DEFAULT NULL,
   `siteAdminName` varchar(64) DEFAULT NULL,
-  `siteAdminMail` varchar(64) DEFAULT NULL,
+  `siteAdminMail` varchar(254) DEFAULT NULL,
   `siteDomain` varchar(32) DEFAULT NULL,
   `siteURL` varchar(64) DEFAULT NULL,
   `siteLoginText` varchar(128) DEFAULT NULL,
@@ -179,6 +181,7 @@ CREATE TABLE `settings` (
   `enablePSTN` TINYINT(1)  NULL  DEFAULT '0',
   `enableChangelog` TINYINT(1)  NOT NULL  DEFAULT '1',
   `enableCustomers` TINYINT(1)  NOT NULL  DEFAULT '1',
+  `enableVaults` TINYINT(1)  NOT NULL  DEFAULT '1',
   `link_field` VARCHAR(32)  NULL  DEFAULT '0',
   `version` varchar(5) DEFAULT NULL,
   `dbversion` INT(8) NOT NULL DEFAULT '0',
@@ -199,9 +202,9 @@ CREATE TABLE `settings` (
   `api` BINARY  NOT NULL  DEFAULT '0',
   `scanPingPath` VARCHAR(64)  NULL  DEFAULT '/bin/ping',
   `scanFPingPath` VARCHAR(64)  NULL  DEFAULT '/bin/fping',
-  `scanPingType` SET('ping','pear','fping')  NOT NULL  DEFAULT 'ping',
+  `scanPingType` ENUM('none','ping','pear','fping') NOT NULL DEFAULT 'ping',
   `scanMaxThreads` INT(4)  NULL  DEFAULT '128',
-  `prettyLinks` SET("Yes","No")  NOT NULL  DEFAULT 'No',
+  `prettyLinks` ENUM('Yes','No') NOT NULL DEFAULT 'No',
   `hiddenCustomFields` text NULL,
   `inactivityTimeout` INT(5)  NOT NULL  DEFAULT '3600',
   `updateTags` TINYINT(1)  NULL  DEFAULT '0',
@@ -211,13 +214,13 @@ CREATE TABLE `settings` (
   `decodeMAC` TINYINT(1)  NULL  DEFAULT '1',
   `tempShare` TINYINT(1)  NULL  DEFAULT '0',
   `tempAccess` TEXT  NULL,
-  `log` SET('Database','syslog', 'both')  NOT NULL  DEFAULT 'Database',
+  `log` ENUM('Database','syslog', 'both') NOT NULL DEFAULT 'Database',
   `subnetView` TINYINT  NOT NULL  DEFAULT '0',
   `enableCircuits` TINYINT(1)  NULL  DEFAULT '1',
   `enableRouting` TINYINT(1)  NULL  DEFAULT '0',
   `permissionPropagate` TINYINT(1)  NULL  DEFAULT '1',
   `passwordPolicy` VARCHAR(1024)  NULL  DEFAULT '{\"minLength\":8,\"maxLength\":0,\"minNumbers\":0,\"minLetters\":0,\"minLowerCase\":0,\"minUpperCase\":0,\"minSymbols\":0,\"maxSymbols\":0,\"allowedSymbols\":\"#,_,-,!,[,],=,~\"}',
-  `2fa_provider` SET('none','Google_Authenticator')  NULL  DEFAULT 'none',
+  `2fa_provider` ENUM('none','Google_Authenticator') NULL DEFAULT 'none',
   `2fa_name` VARCHAR(32)  NULL  DEFAULT 'phpipam',
   `2fa_length` INT(2)  NULL  DEFAULT '16',
   `2fa_userchange` BOOL  NOT NULL  DEFAULT '1',
@@ -226,7 +229,7 @@ CREATE TABLE `settings` (
 /* insert default values */
 INSERT INTO `settings` (`id`, `siteTitle`, `siteAdminName`, `siteAdminMail`, `siteDomain`, `siteURL`, `domainAuth`, `enableIPrequests`, `enableVRF`, `enableDNSresolving`, `version`, `donate`, `IPfilter`, `vlanDuplicate`, `subnetOrdering`, `visualLimit`)
 VALUES
-	(1, 'phpipam IP address management', 'Sysadmin', 'admin@domain.local', 'domain.local', 'http://yourpublicurl.com', 0, 0, 0, 0, '1.4', 0, 'mac;owner;state;switch;note;firewallAddressObject', 1, 'subnet,asc', 24);
+  (1, 'phpipam IP address management', 'Sysadmin', 'admin@domain.local', 'domain.local', 'http://yourpublicurl.com', 0, 0, 0, 0, '1.4', 0, 'mac;owner;state;switch;note;firewallAddressObject', 1, 'subnet,asc', 24);
 
 
 # Dump of table settingsMail
@@ -235,21 +238,21 @@ DROP TABLE IF EXISTS `settingsMail`;
 
 CREATE TABLE `settingsMail` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `mtype` set('localhost','smtp') NOT NULL DEFAULT 'localhost',
-  `msecure` SET('none','ssl','tls')  NOT NULL  DEFAULT 'none',
-  `mauth` set('yes','no') NOT NULL DEFAULT 'no',
+  `mtype` ENUM('localhost','smtp') NOT NULL DEFAULT 'localhost',
+  `msecure` ENUM('none','ssl','tls')  NOT NULL  DEFAULT 'none',
+  `mauth` ENUM('yes','no') NOT NULL DEFAULT 'no',
   `mserver` varchar(128) DEFAULT NULL,
   `mport` int(5) DEFAULT '25',
-  `muser` varchar(64) DEFAULT NULL,
-  `mpass` varchar(64) DEFAULT NULL,
-  `mAdminName` varchar(64) DEFAULT NULL,
-  `mAdminMail` varchar(64) DEFAULT NULL,
+  `muser` varchar(254) DEFAULT NULL,
+  `mpass` varchar(128) DEFAULT NULL,
+  `mAdminName` varchar(128) DEFAULT NULL,
+  `mAdminMail` varchar(254) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /* insert default values */
 INSERT INTO `settingsMail` (`id`, `mtype`)
 VALUES
-	(1, 'localhost');
+  (1, 'localhost');
 
 
 # Dump of table subnets
@@ -266,21 +269,22 @@ CREATE TABLE `subnets` (
   `firewallAddressObject` VARCHAR(100) NULL DEFAULT NULL,
   `vrfId` INT(11)  UNSIGNED  NULL  DEFAULT NULL,
   `masterSubnetId` INT(11)  UNSIGNED  NOT NULL default 0,
-  `allowRequests` tinyint(1) DEFAULT '0',
+  `allowRequests` BOOL NOT NULL DEFAULT '0',
   `vlanId` INT(11)  UNSIGNED  NULL  DEFAULT NULL,
-  `showName` tinyint(1) DEFAULT '0',
+  `showName` BOOL NOT NULL DEFAULT '0',
   `device` INT  UNSIGNED  NULL  DEFAULT '0',
   `permissions` varchar(1024) DEFAULT NULL,
-  `pingSubnet` BOOL NULL  DEFAULT '0',
-  `discoverSubnet` BINARY(1)  NULL  DEFAULT '0',
-  `resolveDNS` TINYINT(1)  NULL  DEFAULT '0',
-  `DNSrecursive` TINYINT(1)  NULL  DEFAULT '0',
-  `DNSrecords` TINYINT(1)  NULL  DEFAULT '0',
+  `pingSubnet` BOOL NOT NULL DEFAULT '0',
+  `discoverSubnet` BOOL NOT NULL DEFAULT '0',
+  `resolveDNS` BOOL NOT NULL DEFAULT '0',
+  `DNSrecursive` BOOL NOT NULL DEFAULT '0',
+  `DNSrecords` BOOL NOT NULL DEFAULT '0',
   `nameserverId` INT(11) NULL DEFAULT '0',
   `scanAgent` INT(11)  DEFAULT NULL,
   `customer_id` INT(11) unsigned NULL default NULL,
-  `isFolder` BOOL NULL  DEFAULT '0',
-  `isFull` TINYINT(1)  NULL  DEFAULT '0',
+  `isFolder` BOOL NOT NULL DEFAULT '0',
+  `isFull` BOOL NOT NULL DEFAULT '0',
+  `isPool` BOOL NOT NULL DEFAULT '0',
   `state` INT(3)  NULL  DEFAULT '2',
   `threshold` int(3)  NULL  DEFAULT 0,
   `location` INT(11)  UNSIGNED  NULL  DEFAULT NULL,
@@ -298,12 +302,12 @@ CREATE TABLE `subnets` (
 /* insert default values */
 INSERT INTO `subnets` (`id`, `subnet`, `mask`, `sectionId`, `description`, `vrfId`, `masterSubnetId`, `allowRequests`, `vlanId`, `showName`, `permissions`, `isFolder`)
 VALUES
-	(1,'336395549904799703390415618052362076160','64',2,'Private subnet 1',0,'0',1,1,1,'{\"3\":\"1\",\"2\":\"2\"}',0),
-	(2,'168427520','16','1','Business customers',0,'0',1,0,1,'{\"3\":\"1\",\"2\":\"2\"}',0),
-	(3,'168427776','24','1','Customer 1',0,'2',1,0,1,'{\"3\":\"1\",\"2\":\"2\"}',0),
-	(4,'168428032','24','1','Customer 2',0,'2',1,0,1,'{\"3\":\"1\",\"2\":\"2\"}',0),
-	(5, '0', '', 1, 'My folder', 0, 0, 0, 0, 0, '{\"3\":\"1\",\"2\":\"2\"}', 1),
-	(6, '172037632', '24', 1, 'DHCP range', 0, 5, 0, 0, 1, '{\"3\":\"1\",\"2\":\"2\"}', 0);
+  (1,'336395549904799703390415618052362076160','64',2,'Private subnet 1',0,'0',1,1,1,'{\"3\":\"1\",\"2\":\"2\"}',0),
+  (2,'168427520','16','1','Business customers',0,'0',1,0,1,'{\"3\":\"1\",\"2\":\"2\"}',0),
+  (3,'168427776','24','1','Customer 1',0,'2',1,0,1,'{\"3\":\"1\",\"2\":\"2\"}',0),
+  (4,'168428032','24','1','Customer 2',0,'2',1,0,1,'{\"3\":\"1\",\"2\":\"2\"}',0),
+  (5, '0', '', 1, 'My folder', 0, 0, 0, 0, 0, '{\"3\":\"1\",\"2\":\"2\"}', 1),
+  (6, '172037632', '24', 1, 'DHCP range', 0, 5, 0, 0, 1, '{\"3\":\"1\",\"2\":\"2\"}', 0);
 
 
 # Dump of table devices
@@ -354,8 +358,8 @@ CREATE TABLE `userGroups` (
 /* insert default values */
 INSERT INTO `userGroups` (`g_id`, `g_name`, `g_desc`)
 VALUES
-	(2,'Operators','default Operator group'),
-	(3,'Guests','default Guest group (viewers)');
+  (2,'Operators','default Operator group'),
+  (3,'Guests','default Guest group (viewers)');
 
 
 # Dump of table users
@@ -370,28 +374,28 @@ CREATE TABLE `users` (
   `groups` varchar(1024) COLLATE utf8_bin DEFAULT NULL,
   `role` text CHARACTER SET utf8,
   `real_name` varchar(128) CHARACTER SET utf8 DEFAULT NULL,
-  `email` varchar(64) CHARACTER SET utf8 DEFAULT NULL,
+  `email` varchar(254) CHARACTER SET utf8 DEFAULT NULL,
   `domainUser` binary(1) DEFAULT '0',
   `widgets` VARCHAR(1024)  NULL  DEFAULT 'statistics;favourite_subnets;changelog;top10_hosts_v4',
   `lang` INT(11) UNSIGNED  NULL  DEFAULT '9',
   `favourite_subnets` VARCHAR(1024)  NULL  DEFAULT NULL,
-  `disabled` SET('Yes','No')  NOT NULL  DEFAULT 'No',
-  `mailNotify` SET('Yes','No')  NULL  DEFAULT 'No',
-  `mailChangelog` SET('Yes','No')  NULL  DEFAULT 'No',
-  `passChange` SET('Yes','No')  NOT NULL  DEFAULT 'No',
+  `disabled` ENUM('Yes','No')  NOT NULL  DEFAULT 'No',
+  `mailNotify` ENUM('Yes','No')  NOT NULL  DEFAULT 'No',
+  `mailChangelog` ENUM('Yes','No')  NOT NULL  DEFAULT 'No',
+  `passChange` ENUM('Yes','No')  NOT NULL  DEFAULT 'No',
   `editDate` TIMESTAMP  NULL  ON UPDATE CURRENT_TIMESTAMP,
   `lastLogin` TIMESTAMP  NULL,
   `lastActivity` TIMESTAMP  NULL,
-  `compressOverride` SET('default','Uncompress') NOT NULL DEFAULT 'default',
+  `compressOverride` ENUM('default','Uncompress') NOT NULL DEFAULT 'default',
   `hideFreeRange` tinyint(1) DEFAULT '0',
-  `menuType` SET('Static','Dynamic')  NULL  DEFAULT 'Dynamic',
+  `menuType` ENUM('Static','Dynamic')  NOT NULL  DEFAULT 'Dynamic',
   `menuCompact` TINYINT  NULL  DEFAULT '1',
   `2fa` BOOL  NOT NULL  DEFAULT '0',
   `2fa_secret` VARCHAR(32)  NULL  DEFAULT NULL,
   `theme` VARCHAR(32)  NULL  DEFAULT '',
   `token` VARCHAR(24)  NULL  DEFAULT NULL,
   `token_valid_until` DATETIME  NULL,
-  `module_permissions` varchar(255) COLLATE utf8_bin DEFAULT '{"vlan":"1","vrf":"1","pdns":"1","circuits":"1","racks":"1","nat":"1","pstn":"1","customers":"1","locations":"1","devices":"1"}',
+  `module_permissions` varchar(255) COLLATE utf8_bin DEFAULT '{"vlan":"1","l2dom":"1","vrf":"1","pdns":"1","circuits":"1","racks":"1","nat":"1","pstn":"1","customers":"1","locations":"1","devices":"1","routing":"1","vaults":"1"}',
   `compress_actions` TINYINT(1)  NULL  DEFAULT '1',
   PRIMARY KEY (`username`),
   UNIQUE KEY `id_2` (`id`)
@@ -399,7 +403,7 @@ CREATE TABLE `users` (
 /* insert default values */
 INSERT INTO `users` (`id`, `username`, `password`, `groups`, `role`, `real_name`, `email`, `domainUser`,`widgets`, `passChange`)
 VALUES
-	(1,'Admin',X'243624726F756E64733D33303030244A51454536644C394E70766A6546733424524B3558336F6132382E557A742F6835564166647273766C56652E3748675155594B4D58544A5573756438646D5766507A5A51506252626B38784A6E314B797974342E64576D346E4A4959684156326D624F5A33672E',X'','Administrator','phpIPAM Admin','admin@domain.local',X'30','statistics;favourite_subnets;changelog;access_logs;error_logs;top10_hosts_v4', 'Yes');
+  (1,'Admin',X'243624726F756E64733D33303030244A51454536644C394E70766A6546733424524B3558336F6132382E557A742F6835564166647273766C56652E3748675155594B4D58544A5573756438646D5766507A5A51506252626B38784A6E314B797974342E64576D346E4A4959684156326D624F5A33672E',X'','Administrator','phpIPAM Admin','admin@domain.local',X'30','statistics;favourite_subnets;changelog;access_logs;error_logs;top10_hosts_v4', 'Yes');
 
 
 # Dump of table lang
@@ -415,18 +419,20 @@ CREATE TABLE `lang` (
 /* insert default values */
 INSERT INTO `lang` (`l_id`, `l_code`, `l_name`)
 VALUES
-	(1, 'en_GB.UTF-8', 'English'),
-	(2, 'sl_SI.UTF-8', 'Slovenščina'),
-	(3, 'fr_FR.UTF-8', 'Français'),
-	(4, 'nl_NL.UTF-8', 'Nederlands'),
-	(5, 'de_DE.UTF-8', 'Deutsch'),
-	(6, 'pt_BR.UTF-8', 'Brazil'),
-	(7,	'es_ES.UTF-8', 'Español'),
-	(8, 'cs_CZ.UTF-8', 'Czech'),
-	(9, 'en_US.UTF-8', 'English (US)'),
-  (10,'ru_RU.UTF-8', 'Russian'),
-  (11,'zh_CN.UTF-8', 'Chinese'),
-  (12,'ja_JP.UTF-8', 'Japanese');
+   (1, 'en_GB.UTF-8', 'English'),
+   (2, 'sl_SI.UTF-8', 'Slovenščina'),
+   (3, 'fr_FR.UTF-8', 'Français'),
+   (4, 'nl_NL.UTF-8', 'Nederlands'),
+   (5, 'de_DE.UTF-8', 'Deutsch'),
+   (6, 'pt_BR.UTF-8', 'Brazil'),
+   (7, 'es_ES.UTF-8', 'Español'),
+   (8, 'cs_CZ.UTF-8', 'Czech'),
+   (9, 'en_US.UTF-8', 'English (US)'),
+  (10, 'ru_RU.UTF-8', 'Russian'),
+  (11, 'zh_CN.UTF-8', 'Chinese'),
+  (12, 'ja_JP.UTF-8', 'Japanese'),
+  (13, 'zh_TW.UTF-8', 'Chinese traditional (繁體中文)'),
+  (14, 'it_IT.UTF-8', 'Italian');
 
 
 # Dump of table vlans
@@ -448,8 +454,8 @@ CREATE TABLE `vlans` (
 /* insert default values */
 INSERT INTO `vlans` (`vlanId`, `name`, `number`, `description`)
 VALUES
-	(1,'IPv6 private 1',2001,'IPv6 private 1 subnets'),
-	(2,'Servers DMZ',4001,'DMZ public');
+  (1,'IPv6 private 1',2001,'IPv6 private 1 subnets'),
+  (2,'Servers DMZ',4001,'DMZ public');
 
 
 # Dump of table vlanDomains
@@ -466,7 +472,7 @@ CREATE TABLE `vlanDomains` (
 /* insert default values */
 INSERT INTO `vlanDomains` (`id`, `name`, `description`, `permissions`)
 VALUES
-	(1, 'default', 'default L2 domain', NULL);
+  (1, 'default', 'default L2 domain', NULL);
 
 
 # Dump of table vrf
@@ -502,7 +508,7 @@ CREATE TABLE `nameservers` (
 /* insert default values */
 INSERT INTO `nameservers` (`name`, `namesrv1`, `description`, `permissions`)
 VALUES
-	('Google NS', '8.8.8.8;8.8.4.4', 'Google public nameservers', '1;2');
+  ('Google NS', '8.8.8.8;8.8.4.4', 'Google public nameservers', '1;2');
 
 
 
@@ -536,10 +542,10 @@ CREATE TABLE `changelog` (
   `ctype` set('ip_addr','subnet','section') NOT NULL DEFAULT '',
   `coid` int(11) unsigned NOT NULL,
   `cuser` int(11) unsigned NOT NULL,
-  `caction` set('add','edit','delete','truncate','resize','perm_change') NOT NULL DEFAULT 'edit',
-  `cresult` set('error','success') NOT NULL DEFAULT '',
+  `caction` ENUM('add','edit','delete','truncate','resize','perm_change') NOT NULL DEFAULT 'edit',
+  `cresult` ENUM('error','success') NOT NULL DEFAULT 'success',
   `cdate` datetime NOT NULL,
-  `cdiff` varchar(2048) DEFAULT NULL,
+  `cdiff` text DEFAULT NULL,
   PRIMARY KEY (`cid`),
   KEY `coid` (`coid`),
   KEY `ctype` (`ctype`)
@@ -565,24 +571,25 @@ CREATE TABLE `widgets` (
 /* insert default values */
 INSERT INTO `widgets` (`wid`, `wtitle`, `wdescription`, `wfile`, `wparams`, `whref`, `wsize`, `wadminonly`, `wactive`)
 VALUES
-	(1, 'Statistics', 'Shows some statistics on number of hosts, subnets', 'statistics', NULL, 'no', '4', 'no', 'yes'),
-	(2, 'Favourite subnets', 'Shows 5 favourite subnets', 'favourite_subnets', NULL, 'yes', '8', 'no', 'yes'),
-	(3, 'Top 10 IPv4 subnets by number of hosts', 'Shows graph of top 10 IPv4 subnets by number of hosts', 'top10_hosts_v4', NULL, 'yes', '6', 'no', 'yes'),
-	(4, 'Top 10 IPv6 subnets by number of hosts', 'Shows graph of top 10 IPv6 subnets by number of hosts', 'top10_hosts_v6', NULL, 'yes', '6', 'no', 'yes'),
-	(5, 'Top 10 IPv4 subnets by usage percentage', 'Shows graph of top 10 IPv4 subnets by usage percentage', 'top10_percentage', NULL, 'yes', '6', 'no', 'yes'),
-	(6, 'Last 5 change log entries', 'Shows last 5 change log entries', 'changelog', NULL, 'yes', '12', 'no', 'yes'),
-	(7, 'Active IP addresses requests', 'Shows list of active IP address request', 'requests', NULL, 'yes', '6', 'yes', 'yes'),
-	(8, 'Last 5 informational logs', 'Shows list of last 5 informational logs', 'access_logs', NULL, 'yes', '6', 'yes', 'yes'),
-	(9, 'Last 5 warning / error logs', 'Shows list of last 5 warning and error logs', 'error_logs', NULL, 'yes', '6', 'yes', 'yes'),
-	(10,'Tools menu', 'Shows quick access to tools menu', 'tools', NULL, 'yes', '6', 'no', 'yes'),
-	(11,'IP Calculator', 'Shows IP calculator as widget', 'ipcalc', NULL, 'yes', '6', 'no', 'yes'),
-	(12,'IP Request', 'IP Request widget', 'iprequest', NULL, 'no', '6', 'no', 'yes'),
-	(13,'Threshold', 'Shows threshold usage for top 5 subnets', 'threshold', NULL, 'yes', '6', 'no', 'yes'),
-	(14,'Inactive hosts', 'Shows list of inactive hosts for defined period', 'inactive-hosts', 86400, 'yes', '6', 'yes', 'yes'),
-	(15, 'Locations', 'Shows map of locations', 'locations', NULL, 'yes', '6', 'no', 'yes'),
+  (1, 'Statistics', 'Shows some statistics on number of hosts, subnets', 'statistics', NULL, 'no', '4', 'no', 'yes'),
+  (2, 'Favourite subnets', 'Shows 5 favourite subnets', 'favourite_subnets', NULL, 'yes', '8', 'no', 'yes'),
+  (3, 'Top 10 IPv4 subnets by number of hosts', 'Shows graph of top 10 IPv4 subnets by number of hosts', 'top10_hosts_v4', NULL, 'yes', '6', 'no', 'yes'),
+  (4, 'Top 10 IPv6 subnets by number of hosts', 'Shows graph of top 10 IPv6 subnets by number of hosts', 'top10_hosts_v6', NULL, 'yes', '6', 'no', 'yes'),
+  (5, 'Top 10 IPv4 subnets by usage percentage', 'Shows graph of top 10 IPv4 subnets by usage percentage', 'top10_percentage', NULL, 'yes', '6', 'no', 'yes'),
+  (6, 'Last 5 change log entries', 'Shows last 5 change log entries', 'changelog', NULL, 'yes', '12', 'no', 'yes'),
+  (7, 'Active IP addresses requests', 'Shows list of active IP address request', 'requests', NULL, 'yes', '6', 'yes', 'yes'),
+  (8, 'Last 5 informational logs', 'Shows list of last 5 informational logs', 'access_logs', NULL, 'yes', '6', 'yes', 'yes'),
+  (9, 'Last 5 warning / error logs', 'Shows list of last 5 warning and error logs', 'error_logs', NULL, 'yes', '6', 'yes', 'yes'),
+  (10,'Tools menu', 'Shows quick access to tools menu', 'tools', NULL, 'yes', '6', 'no', 'yes'),
+  (11,'IP Calculator', 'Shows IP calculator as widget', 'ipcalc', NULL, 'yes', '6', 'no', 'yes'),
+  (12,'IP Request', 'IP Request widget', 'iprequest', NULL, 'no', '6', 'no', 'yes'),
+  (13,'Threshold', 'Shows threshold usage for top 5 subnets', 'threshold', NULL, 'yes', '6', 'no', 'yes'),
+  (14,'Inactive hosts', 'Shows list of inactive hosts for defined period', 'inactive-hosts', 86400, 'yes', '6', 'yes', 'yes'),
+  (15, 'Locations', 'Shows map of locations', 'locations', NULL, 'yes', '6', 'no', 'yes'),
   (16, 'Bandwidth calculator', 'Calculate bandwidth', 'bw_calculator', NULL, 'no', '6', 'no', 'yes'),
   (17, 'Customers', 'Shows customer list', 'customers', NULL, 'yes', '6', 'no', 'yes'),
-  (18, 'User Instructions', 'Shows user instructions', 'instructions', NULL, 'yes', '6', 'no', 'yes');
+  (18, 'User Instructions', 'Shows user instructions', 'instructions', NULL, 'yes', '6', 'no', 'yes'),
+  (19, 'MAC lookup', 'Shows MAC address vendor', 'mac-lookup', NULL, 'yes', '6', 'no', 'yes');
 
 
 
@@ -599,15 +606,15 @@ CREATE TABLE `deviceTypes` (
 /* insert default values */
 INSERT INTO `deviceTypes` (`tid`, `tname`, `tdescription`)
 VALUES
-	(1, 'Switch', 'Switch'),
-	(2, 'Router', 'Router'),
-	(3, 'Firewall', 'Firewall'),
-	(4, 'Hub', 'Hub'),
-	(5, 'Wireless', 'Wireless'),
-	(6, 'Database', 'Database'),
-	(7, 'Workstation', 'Workstation'),
-	(8, 'Laptop', 'Laptop'),
-	(9, 'Other', 'Other');
+  (1, 'Switch', 'Switch'),
+  (2, 'Router', 'Router'),
+  (3, 'Firewall', 'Firewall'),
+  (4, 'Hub', 'Hub'),
+  (5, 'Wireless', 'Wireless'),
+  (6, 'Database', 'Database'),
+  (7, 'Workstation', 'Workstation'),
+  (8, 'Laptop', 'Laptop'),
+  (9, 'Other', 'Other');
 
 
 # Dump of table loginAttempts
@@ -630,17 +637,17 @@ DROP TABLE IF EXISTS `usersAuthMethod`;
 
 CREATE TABLE `usersAuthMethod` (
   `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
-  `type` set('local','http','AD','LDAP','NetIQ','Radius','SAML2') NOT NULL DEFAULT 'local',
-  `params` varchar(2048) DEFAULT NULL,
-  `protected` set('Yes','No') NOT NULL DEFAULT 'Yes',
+  `type` ENUM('local','http','AD','LDAP','NetIQ','Radius','SAML2') NOT NULL DEFAULT 'local',
+  `params` text DEFAULT NULL,
+  `protected` ENUM('Yes','No') NOT NULL DEFAULT 'Yes',
   `description` text,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /* insert default values */
 INSERT INTO `usersAuthMethod` (`id`, `type`, `params`, `protected`, `description`)
 VALUES
-	(1, 'local', NULL, 'Yes', 'Local database'),
-	(2, 'http', NULL, 'Yes', 'Apache authentication');
+  (1, 'local', NULL, 'Yes', 'Local database'),
+  (2, 'http', NULL, 'Yes', 'Apache authentication');
 
 
 # Dump of table ipTags
@@ -661,10 +668,10 @@ CREATE TABLE `ipTags` (
 /* insert default values */
 INSERT INTO `ipTags` (`id`, `type`, `showtag`, `bgcolor`, `fgcolor`, `compress`, `locked`, `updateTag`)
 VALUES
-	(1, 'Offline', 1, '#f59c99', '#ffffff', 'No', 'Yes', 1),
-	(2, 'Used', 0, '#a9c9a4', '#ffffff', 'No', 'Yes', 1),
-	(3, 'Reserved', 1, '#9ac0cd', '#ffffff', 'No', 'Yes', 1),
-	(4, 'DHCP', 1, '#c9c9c9', '#ffffff', 'Yes', 'Yes', 1);
+  (1, 'Offline', 1, '#f59c99', '#ffffff', 'No', 'Yes', 1),
+  (2, 'Used', 0, '#a9c9a4', '#ffffff', 'No', 'Yes', 1),
+  (3, 'Reserved', 1, '#9ac0cd', '#ffffff', 'No', 'Yes', 1),
+  (4, 'DHCP', 1, '#c9c9c9', '#ffffff', 'Yes', 'Yes', 1);
 
 
 # Dump of table firewallZones
@@ -709,6 +716,7 @@ DROP TABLE IF EXISTS `firewallZoneSubnet`;
 CREATE TABLE `firewallZoneSubnet` (
   `zoneId` INT NOT NULL,
   `subnetId` INT(11) NOT NULL,
+  PRIMARY KEY (`zoneId`,`subnetId`),
   INDEX `fk_zoneId_idx` (`zoneId` ASC),
   INDEX `fk_subnetId_idx` (`subnetId` ASC),
   CONSTRAINT `fk_zoneId`
@@ -741,7 +749,7 @@ CREATE TABLE `scanAgents` (
 /* insert default values */
 INSERT INTO `scanAgents` (`id`, `name`, `description`, `type`)
 VALUES
-	(1, 'localhost', 'Scanning from local machine', 'direct');
+  (1, 'localhost', 'Scanning from local machine', 'direct');
 
 
 # Dump of table nat
@@ -807,8 +815,8 @@ CREATE TABLE `locations` (
   `name` varchar(128) NOT NULL DEFAULT '',
   `description` text,
   `address` VARCHAR(128)  NULL  DEFAULT NULL,
-  `lat` varchar(12) DEFAULT NULL,
-  `long` varchar(12) DEFAULT NULL,
+  `lat` varchar(31) DEFAULT NULL,
+  `long` varchar(31) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -913,7 +921,8 @@ DROP TABLE IF EXISTS `circuitsLogicalMapping`;
 CREATE TABLE `circuitsLogicalMapping` (
   `logicalCircuit_id` int(11) unsigned NOT NULL,
   `circuit_id` int(11) unsigned NOT NULL,
-  `order` int(10) unsigned DEFAULT NULL
+  `order` int(10) unsigned DEFAULT NULL,
+  PRIMARY KEY (`logicalCircuit_id`, `circuit_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
@@ -990,9 +999,64 @@ CREATE TABLE `routing_subnets` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
+# Dump of table vaults
+# ------------------------------------------------------------
+DROP TABLE IF EXISTS `vaults`;
+
+CREATE TABLE `vaults` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(64) NOT NULL DEFAULT '',
+  `type` enum('passwords','certificates') NOT NULL DEFAULT 'passwords',
+  `description` text,
+  `test` char(128) NOT NULL DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+# Dump of table vaultItems
+# ------------------------------------------------------------
+DROP TABLE IF EXISTS `vaultItems`;
+
+CREATE TABLE `vaultItems` (
+  `id` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `vaultId` int(11) unsigned NOT NULL,
+  `type` enum('password','certificate') NOT NULL DEFAULT 'password',
+  `type_certificate` enum('public','pkcs12','certificate','website') NOT NULL DEFAULT 'public',
+  `values` text,
+  PRIMARY KEY (`id`),
+  KEY `vaultId` (`vaultId`),
+  CONSTRAINT `vaultItems_ibfk_1` FOREIGN KEY (`vaultId`) REFERENCES `vaults` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+# Dump of table nominatim
+# ------------------------------------------------------------
+DROP TABLE IF EXISTS `nominatim`;
+
+CREATE TABLE `nominatim` (
+  `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
+  `url` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+/* insert default values */
+INSERT INTO `nominatim` (`id`, `url`) VALUES (1, 'https://nominatim.openstreetmap.org/search');
+
+
+# Dump of table nominatim_cache
+# ------------------------------------------------------------
+DROP TABLE IF EXISTS `nominatim_cache`;
+
+CREATE TABLE `nominatim_cache` (
+  `sha256` binary(32) NOT NULL,
+  `date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `query` text NOT NULL,
+  `lat_lng` text NOT NULL,
+  PRIMARY KEY (`sha256`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
 
 # Dump of table -- for autofix comment, leave as it is
 # ------------------------------------------------------------
 
-UPDATE `settings` SET `version` = "1.43";
-UPDATE `settings` SET `dbversion` = 25;
+UPDATE `settings` SET `version` = "1.52";
+UPDATE `settings` SET `dbversion` = 39;

@@ -1,0 +1,61 @@
+packaging_format = 2
+
+id = "phpipam"
+name = "phpIPAM"
+description.en = "Web IP address management application"
+description.fr = "Application web de gestion d'adresses IP"
+
+version = "1.5.2~ynh2"
+
+maintainers = [""]
+
+[upstream]
+license = "GPL-3.0-only"
+website = "https://phpipam.net"
+demo = "http://demo.phpipam.net"
+admindoc = "https://phpipam.net/documents/"
+code = "https://github.com/phpipam/phpipam"
+
+[integration]
+yunohost = ">= 11.1.19"
+architectures = "all"
+multi_instance = true
+ldap = false
+sso = false
+disk = "50M"
+ram.build = "50M"
+ram.runtime = "50M"
+
+[install]
+    [install.domain]
+    type = "domain"
+
+    [install.path]
+    type = "path"
+    default = "/phpipam"
+
+    [install.init_main_permission]
+    type = "group"
+    default = "visitors"
+
+[resources]
+        [resources.sources.main]
+        url = "https://github.com/phpipam/phpipam/releases/download/v1.5.1/phpipam-v1.5.1.zip"
+        sha256 = "9ced23778f6455d3db8975e09bc5b2f605add9f7feda1568b716803850d19c58"
+        autoupdate.strategy = "latest_github_tag"
+
+    [resources.system_user]
+
+    [resources.install_dir]
+
+    [resources.permissions]
+    main.url = "/"
+    api.url = "/api"
+    api.show_tile = false
+    api.allowed = "visitors"
+
+    [resources.apt]
+    packages = "mariadb-server php7.4-gmp php7.4-mysql php7.4-ldap php7.4-gd php7.4-opcache php7.4-fileinfo php7.4-intl php7.4-json php7.4-cli php7.4-mbstring php7.4-xml"
+
+    [resources.database]
+    type = "mysql"

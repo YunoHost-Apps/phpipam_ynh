@@ -1,0 +1,1 @@
+The Default credentials for a new instance of phpIPAM are: Admin / ipamadmin
