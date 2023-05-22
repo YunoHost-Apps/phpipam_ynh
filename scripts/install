@@ -42,6 +42,13 @@ chmod 644 "$install_dir/config.php"
 chown $app: "$install_dir/config.php"
 
 #=================================================
+# DATABASE CONFIGURATION
+#=================================================
+ynh_script_progression --message="Adding database configuration..." --weight=1
+
+ynh_mysql_connect_as --user="user" --password="pass" < $install_dir/db/SCHEMA.sql
+
+#=================================================
 # GENERIC FINALIZATION
 #=================================================
 # SETUP LOGROTATE
