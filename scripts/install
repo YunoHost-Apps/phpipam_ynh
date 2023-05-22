@@ -46,7 +46,7 @@ chown $app: "$install_dir/config.php"
 #=================================================
 ynh_script_progression --message="Adding database configuration..." --weight=1
 
-ynh_mysql_connect_as --user="user" --password="pass" < $install_dir/db/SCHEMA.sql
+ynh_mysql_connect_as --user="$db_user" --password="$db_pwd" < $install_dir/db/SCHEMA.sql
 
 #=================================================
 # GENERIC FINALIZATION
