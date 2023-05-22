@@ -7,7 +7,7 @@ description.fr = "Application web de gestion d'adresses IP"
 
 version = "1.5.2~ynh1"
 
-maintainers = ["liberodark"]
+maintainers = [""]
 
 [upstream]
 license = "GPL-3.0-only"
@@ -42,7 +42,7 @@ ram.runtime = "50M"
         [resources.sources.main]
         url = "https://github.com/phpipam/phpipam/releases/download/v1.5.1/phpipam-v1.5.1.zip"
         sha256 = "9ced23778f6455d3db8975e09bc5b2f605add9f7feda1568b716803850d19c58"
-
+        autoupdate.strategy = "latest_github_tag"
 
     [resources.system_user]
 
