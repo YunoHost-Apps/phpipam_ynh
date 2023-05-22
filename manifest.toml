@@ -50,6 +50,9 @@ ram.runtime = "50M"
 
     [resources.permissions]
     main.url = "/"
+    api.url = "/api"
+    api.show_tile = false
+    api.allowed = "visitors"
 
     [resources.apt]
     packages = "mariadb-server php7.4-gmp php7.4-mysql php7.4-ldap php7.4-gd php7.4-opcache php7.4-fileinfo php7.4-intl php7.4-json php7.4-cli php7.4-mbstring php7.4-xml"
