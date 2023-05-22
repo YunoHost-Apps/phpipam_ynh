@@ -21,17 +21,6 @@ chmod -R o-rwx "$install_dir"
 chown -R $app:www-data "$install_dir"
 
 #=================================================
-# NGINX CONFIGURATION
-#=================================================
-ynh_script_progression --message="Configuring NGINX web server..." --weight=1
-
-# Create a dedicated NGINX config
-ynh_add_nginx_config
-
-# Create a dedicated PHP-FPM config
-ynh_add_fpm_config --usage=low --footprint=low
-
-#=================================================
 # ADD A CONFIGURATION
 #=================================================
 ynh_script_progression --message="Adding a configuration file..." --weight=1
@@ -49,11 +38,15 @@ ynh_script_progression --message="Adding database configuration..." --weight=1
 ynh_mysql_connect_as --user="$db_user" --password="$db_pwd" < $install_dir/db/SCHEMA.sql
 
 #=================================================
-# GENERIC FINALIZATION
+# NGINX CONFIGURATION
 #=================================================
-# SETUP LOGROTATE
-#=================================================
-ynh_script_progression --message="Configuring log rotation..." --weight=1
+ynh_script_progression --message="Configuring NGINX web server..." --weight=1
+
+# Create a dedicated NGINX config
+ynh_add_nginx_config
+
+# Create a dedicated PHP-FPM config
+ynh_add_fpm_config --usage=low --footprint=low
 
 # Use logrotate to manage application logfile(s)
 ynh_use_logrotate
