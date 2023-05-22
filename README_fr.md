@@ -16,7 +16,7 @@ Si vous n’avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) po
 
 ## Vue d’ensemble
 
-Application web de gestion d'adresses IP
+Web IP address management application
 
 **Version incluse :** 1.5.2~ynh1
 
