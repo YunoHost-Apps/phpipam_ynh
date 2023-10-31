@@ -31,7 +31,7 @@ phpIPAM is an open-source web IP address management application. Its goal is to 
 * Official app website: <https://phpipam.net>
 * Official admin documentation: <https://phpipam.net/documents/>
 * Upstream app code repository: <https://github.com/phpipam/phpipam>
-* YunoHost documentation for this app: <https://yunohost.org/app_phpipam>
+* YunoHost Store: <https://apps.yunohost.org/app/phpipam>
 * Report a bug: <https://github.com/YunoHost-Apps/phpipam_ynh/issues>
 
 ## Developer info
