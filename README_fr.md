@@ -16,7 +16,8 @@ Si vous n’avez pas YunoHost, regardez [ici](https://yunohost.org/#/install) po
 
 ## Vue d’ensemble
 
-phpIPAM is an open-source web IP address management application. Its goal is to provide light and simple IP address management application. It is ajax-based using jQuery libraries, it uses php scripts and javascript and some HTML5/CSS3 features, so some modern browser is preferred to be able to display javascript quickly and correctly.
+phpIPAM est une application open source de gestion d'adresses IP Web. Son objectif est de fournir une application de gestion d'adresses IP légère et simple. Il est basé sur ajax utilisant les bibliothèques jQuery, il utilise des scripts php et javascript ainsi que certaines fonctionnalités HTML5/CSS3, il est donc préférable d'utiliser certains navigateurs modernes pour pouvoir afficher javascript rapidement et correctement.
+
 
 **Version incluse :** 1.19.8~ynh2
 
