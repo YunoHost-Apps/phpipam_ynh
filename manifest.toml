@@ -7,7 +7,7 @@ description.fr = "Application web de gestion d'adresses IP"
 
 version = "1.19.8~ynh2"
 
-maintainers = [""]
+maintainers = []
 
 [upstream]
 license = "GPL-3.0-only"
