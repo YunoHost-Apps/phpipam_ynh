@@ -5,7 +5,7 @@ name = "phpIPAM"
 description.en = "Web IP address management application"
 description.fr = "Application web de gestion d'adresses IP"
 
-version = "1.19.8~ynh2"
+version = "1.7.0~ynh1"
 
 maintainers = []
 
@@ -17,7 +17,8 @@ admindoc = "https://phpipam.net/documents/"
 code = "https://github.com/phpipam/phpipam"
 
 [integration]
-yunohost = ">= 11.2"
+yunohost = ">= 11.2.30"
+helpers_version = "2.1"
 architectures = "all"
 multi_instance = true
 
@@ -43,13 +44,14 @@ ram.runtime = "50M"
 
 [resources]
         [resources.sources.main]
-        url = "https://github.com/phpipam/phpipam/archive/refs/tags/v1.19.008.tar.gz"
-        sha256 = "dcb2c3e7e627d5d48380a478d9c8281c34734885d4adeb4e31d3f9aebd54c347"
+        url = "https://github.com/phpipam/phpipam/releases/download/v1.7.0/phpipam-v1.7.0.zip"
+        sha256 = "1a489ac21c277a3771d37f9807ef294e20a03bfe5abda132f065118a6f7940e0"
         autoupdate.strategy = "latest_github_tag"
 
     [resources.system_user]
 
     [resources.install_dir]
+    group = "www-data:r-x"
 
     [resources.permissions]
     main.url = "/"
@@ -58,7 +60,7 @@ ram.runtime = "50M"
     api.allowed = "visitors"
 
     [resources.apt]
-    packages = "mariadb-server, php8.2-gmp, php8.2-mysql, php8.2-ldap, php8.2-gd, php8.2-opcache, php8.2-fileinfo, php8.2-intl, php8.2-cli, php8.2-mbstring, php8.2-xml"
+    packages = "mariadb-server, php8.3-gmp, php8.3-mysql, php8.3-ldap, php8.3-gd, php8.3-opcache, php8.3-fileinfo, php8.3-intl, php8.3-cli, php8.3-mbstring, php8.3-xml"
 
     [resources.database]
     type = "mysql"
