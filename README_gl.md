@@ -5,7 +5,7 @@ NON debe editarse manualmente.
 
 # phpIPAM para YunoHost
 
-[![Nivel de integración](https://dash.yunohost.org/integration/phpipam.svg)](https://dash.yunohost.org/appci/app/phpipam) ![Estado de funcionamento](https://ci-apps.yunohost.org/ci/badges/phpipam.status.svg) ![Estado de mantemento](https://ci-apps.yunohost.org/ci/badges/phpipam.maintain.svg)
+[![Nivel de integración](https://dash.yunohost.org/integration/phpipam.svg)](https://ci-apps.yunohost.org/ci/apps/phpipam/) ![Estado de funcionamento](https://ci-apps.yunohost.org/ci/badges/phpipam.status.svg) ![Estado de mantemento](https://ci-apps.yunohost.org/ci/badges/phpipam.maintain.svg)
 
 [![Instalar phpIPAM con YunoHost](https://install-app.yunohost.org/install-with-yunohost.svg)](https://install-app.yunohost.org/?app=phpipam)
 
@@ -18,7 +18,7 @@ NON debe editarse manualmente.
 
 phpIPAM is an open-source web IP address management application. Its goal is to provide light and simple IP address management application. It is ajax-based using jQuery libraries, it uses php scripts and javascript and some HTML5/CSS3 features, so some modern browser is preferred to be able to display javascript quickly and correctly.
 
-**Versión proporcionada:** 1.19.8~ynh2
+**Versión proporcionada:** 1.7.0~ynh1
 
 **Demo:** <http://demo.phpipam.net>
 
