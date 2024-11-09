@@ -5,7 +5,7 @@ name = "phpIPAM"
 description.en = "Web IP address management application"
 description.fr = "Application web de gestion d'adresses IP"
 
-version = "1.7.0~ynh1"
+version = "1.19.008~ynh1"
 
 maintainers = []
 
@@ -44,8 +44,8 @@ ram.runtime = "50M"
 
 [resources]
         [resources.sources.main]
-        url = "https://github.com/phpipam/phpipam/releases/download/v1.7.0/phpipam-v1.7.0.zip"
-        sha256 = "1a489ac21c277a3771d37f9807ef294e20a03bfe5abda132f065118a6f7940e0"
+        url = "https://github.com/phpipam/phpipam/archive/refs/tags/v1.19.008.tar.gz"
+        sha256 = "dcb2c3e7e627d5d48380a478d9c8281c34734885d4adeb4e31d3f9aebd54c347"
         autoupdate.strategy = "latest_github_tag"
 
     [resources.system_user]

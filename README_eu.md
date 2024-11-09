@@ -18,7 +18,7 @@ EZ editatu eskuz.
 
 phpIPAM is an open-source web IP address management application. Its goal is to provide light and simple IP address management application. It is ajax-based using jQuery libraries, it uses php scripts and javascript and some HTML5/CSS3 features, so some modern browser is preferred to be able to display javascript quickly and correctly.
 
-**Paketatutako bertsioa:** 1.7.0~ynh1
+**Paketatutako bertsioa:** 1.19.008~ynh1
 
 **Demoa:** <http://demo.phpipam.net>
 
