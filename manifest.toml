@@ -60,7 +60,7 @@ ram.runtime = "50M"
     api.allowed = "visitors"
 
     [resources.apt]
-    packages = "mariadb-server, php8.3-gmp, php8.3-mysql, php8.3-ldap, php8.3-gd, php8.3-opcache, php8.3-fileinfo, php8.3-intl, php8.3-cli, php8.3-mbstring, php8.3-xml"
+    packages = "mariadb-server, php8.3-gmp, php8.3-mysql, php8.3-ldap, php8.3-gd, php8.3-opcache, php8.3-fileinfo, php8.3-intl, php8.3-cli, php8.3-mbstring, php8.3-xml, php-pear"
 
     [resources.database]
     type = "mysql"
