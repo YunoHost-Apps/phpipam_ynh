@@ -5,7 +5,7 @@ name = "phpIPAM"
 description.en = "Web IP address management application"
 description.fr = "Application web de gestion d'adresses IP"
 
-version = "1.19.008~ynh1"
+version = "1.8.3~ynh1"
 
 maintainers = []
 
