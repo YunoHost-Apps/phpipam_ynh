@@ -5,7 +5,7 @@ name = "phpIPAM"
 description.en = "Web IP address management application"
 description.fr = "Application web de gestion d'adresses IP"
 
-version = "1.8.3~ynh1"
+version = "1.9.0~ynh1"
 
 maintainers = []
 
@@ -17,13 +17,12 @@ admindoc = "https://phpipam.net/documents/"
 code = "https://github.com/phpipam/phpipam"
 
 [integration]
-yunohost = ">= 11.2.30"
+yunohost = ">= 12.1.40"
 helpers_version = "2.1"
 architectures = "all"
 multi_instance = true
 
 ldap = false
-
 sso = false
 
 disk = "50M"
@@ -44,8 +43,8 @@ ram.runtime = "50M"
 
 [resources]
         [resources.sources.main]
-        url = "https://github.com/phpipam/phpipam/releases/download/v1.8.3/phpipam-v1.8.3.tgz"
-        sha256 = "2fc737da5a04a842cda097f609c4db85c808270eaad5949c4ec03d10f874556d"
+        url = "https://github.com/phpipam/phpipam/releases/download/v1.9.0/phpipam-v1.9.0.tgz"
+        sha256 = "15d957e93fad5f0a14590c62718a305a527a03d8548d9ca9dedf4ac277f08dda"
         autoupdate.strategy = "latest_github_release"
 
     [resources.system_user]
