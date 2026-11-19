@@ -43,8 +43,8 @@ ram.runtime = "50M"
 
 [resources]
         [resources.sources.main]
-        url = "https://github.com/phpipam/phpipam/releases/download/v1.9.1/phpipam-v1.9.1.tgz"
-        sha256 = "49a3a1f7678fb4343dd63f4e0c604c221df355e07b86b48e3d9245f84c282118"
+        url = "https://github.com/phpipam/phpipam/archive/refs/tags/v1.9.1.tar.gz"
+        sha256 = "a44896e9fb5853c0a24505e5dfeeed5d69feddd58bd7f9f4f914d6a4baf988e9"
         autoupdate.strategy = "latest_github_release"
 
     [resources.system_user]
